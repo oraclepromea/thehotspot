@@ -22,6 +22,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuCategories = document.querySelectorAll('.menu-category');
     const menuItems = document.querySelectorAll('.menu-items');
 
+    // Set first category as active by default
+    if (menuCategories.length > 0 && menuItems.length > 0) {
+        menuCategories[0].classList.add('active');
+        menuItems[0].classList.add('active');
+    }
+
     menuCategories.forEach(category => {
         category.addEventListener('click', function() {
             const targetCategory = this.getAttribute('data-category');
@@ -72,11 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
-            navbar.style.background = 'rgba(255, 255, 255, 0.98)';
-            navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            navbar.classList.add('scrolled');
         } else {
-            navbar.style.background = 'rgba(255, 255, 255, 0.95)';
-            navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+            navbar.classList.remove('scrolled');
         }
     });
 });
